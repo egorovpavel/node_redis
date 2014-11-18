@@ -1,7 +1,7 @@
 var redis = require("./")
 //redis.debug_mode = true
 var PORT = process.argv[2] || 6379;
-var HOST = process.argv[3] || '127.0.0.1';
+var HOST = process.argv[3] || redishost;
 
 var c = redis.createClient(PORT, HOST)
 c.unref()
