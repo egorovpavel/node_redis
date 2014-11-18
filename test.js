@@ -116,7 +116,7 @@ next = function next(name) {
 // Tests are run in the order they are defined, so FLUSHDB should always be first.
 
 tests.IPV4 = function () {
-    var ipv4Client = redis.createClient( PORT, "127.0.0.1", { "family" : "IPv4" } );
+    var ipv4Client = redis.createClient( PORT, HOST, { "family" : "IPv4" } );
 
     ipv4Client.once("ready", function start_tests() {
         console.log("Connected to " + ipv4Client.address + ", Redis server version " + ipv4Client.server_info.redis_version + "\n");
