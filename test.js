@@ -142,7 +142,7 @@ tests.IPV6 = function () {
         console.log("Skipping IPV6 for old Redis server version < 2.8.0");
         return run_next_test();
     }
-    var ipv6Client = redis.createClient( PORT, "::1", { "family" : "IPv6" } );
+    var ipv6Client = redis.createClient( PORT, HOST, { "family" : "IPv6" } );
 
     ipv6Client.once("ready", function start_tests() {
         console.log("Connected to " + ipv6Client.address + ", Redis server version " + ipv6Client.server_info.redis_version + "\n");
