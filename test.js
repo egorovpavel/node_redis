@@ -163,31 +163,6 @@ tests.IPV6 = function () {
     });
 }
 
-tests.UNIX_SOCKET = function () {
-    var unixClient = redis.createClient('/tmp/redis.sock');
-
-    // if this fails, check the permission of unix socket.
-    // unixsocket /tmp/redis.sock
-    // unixsocketperm 777
-
-    unixClient.once('ready', function start_tests(){
-        console.log("Connected to " + unixClient.address + ", Redis server version " + unixClient.server_info.redis_version + "\n");
-        console.log("Using reply parser " + unixClient.reply_parser.name);
-
-        unixClient.quit();
-        run_next_test();
-    });
-
-    unixClient.on( 'end', function(){
-
-    });
-
-    // Exit immediately on connection failure, which triggers "exit", below, which fails the test
-    unixClient.on("error", function (err) {
-        console.error("client: " + err.stack);
-        process.exit();
-    });
-}
 
 tests.FLUSHDB = function () {
     var name = "FLUSHDB";
